@@ -11,16 +11,16 @@ import java.util.concurrent.atomic.AtomicLong;
 @Repository
 public class PostRepositoryStubImpl implements PostRepository {
 
-    private final Map<Long, Post> posts = new ConcurrentHashMap<>() {};
+    private final Map<Long, Post> posts = new ConcurrentHashMap<>() {
+    };
     private final AtomicLong idCounter = new AtomicLong();
 
     public List<Post> all() {
         var visiblePosts = new ArrayList<Post>();
         for (Post post : posts.values())
-            for (Long key : posts.keySet())
-                if (post.getId() == key && !post.getRemoved()) {
-                    visiblePosts.add(post);
-                }
+            if (!post.getRemoved()) {
+                visiblePosts.add(post);
+            }
         return visiblePosts;
     }
 
