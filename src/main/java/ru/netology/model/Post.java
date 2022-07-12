@@ -1,8 +1,15 @@
 package ru.netology.model;
 
+import com.google.gson.annotations.Expose;
+
 public class Post {
+
+    @Expose
     private long id;
+
+    @Expose
     private String content;
+    @Expose(serialize = false)
     private boolean remove;
 
     public Post() {
