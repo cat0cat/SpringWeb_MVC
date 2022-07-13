@@ -44,7 +44,7 @@ public class PostRepositoryStubImpl implements PostRepository {
                 id = idCounter.incrementAndGet();
 
             post.setId(id);
-            posts.put(id, post);
+            posts.put(id,post);
         } else if (post.getId() != 0) {
             Long currentId = post.getId();
             posts.put(currentId, post);
